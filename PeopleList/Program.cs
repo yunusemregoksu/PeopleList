@@ -5,7 +5,7 @@ using System.Reflection;
 
 class Program
 {
-    readonly static ApiClient apiClient = new();
+    readonly static PersonApiClient apiClient = new();
 
     static async Task Main(string[] args)
     {
@@ -64,7 +64,7 @@ class Program
                 Console.WriteLine("Please enter a username");
             }
 
-            var person = await apiClient.GetPersonDetailsAsync(input ?? "");
+            var person = await apiClient.DetailsAsync(input ?? "");
             var personData = new List<KeyValuePair<string, string>>();
 
             Type personType = person.GetType();
@@ -114,7 +114,7 @@ class Program
                 await SearchPeopleListAsync();
             }
 
-            var filteredPeopleList = await apiClient.SearchPeopleAsync(input ?? "");
+            var filteredPeopleList = await apiClient.SearchAsync(input ?? "");
 
             Console.WriteLine(filteredPeopleList.ToStringTable(new[] { "UserName", "Name", "Surname" }, a => a.UserName, a => a.FirstName, a => a.LastName));
         }
@@ -128,7 +128,7 @@ class Program
     {
         try
         {
-            var peopleList = await apiClient.GetPeopleAsync();
+            var peopleList = await apiClient.GetAllAsync();
 
             Console.WriteLine(peopleList.ToStringTable(new[] { "UserName", "Name", "Surname" }, a => a.UserName, a => a.FirstName, a => a.LastName));
         }

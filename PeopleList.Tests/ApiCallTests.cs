@@ -8,12 +8,12 @@ namespace PeopleList.Tests
 {
     public class ApiCallTests
     {
-        private ApiClient _client;
+        private PersonApiClient _client;
 
         [SetUp]
         public void Setup()
         {
-            _client = new ApiClient();
+            _client = new PersonApiClient();
         }
 
         [Test]
