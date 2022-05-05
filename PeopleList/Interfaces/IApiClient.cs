@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PeopleList.Interfaces
 {
-    public interface IApiClient<T>
+    public interface IApiClient<T, U>
     {
         Task<List<T>> GetAllAsync();
         Task<List<T>> SearchAsync(string term);
-        Task<T> DetailsAsync(string userName);
+        Task<T> DetailsAsync(U key);
     }
 }

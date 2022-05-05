@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PeopleList
 {
-    public class PersonApiClient : IApiClient<Person>
+    public class PersonApiClient : IApiClient<Person, string>
     {
         public async Task<List<Person>> GetAllAsync()
         {
